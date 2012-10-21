@@ -1,0 +1,47 @@
+Usage
+=====
+
+Posix systems (Linux, Mac OSX, FreeBSD, etc.)
+---------------------------------------------
+
+Linking at compile time:
+    $ dmd -unittest /path/to/libtinfo.a -run terminal.d
+
+	dmd -unittest -m32 -gc /usr/lib32/libtinfo.a -run terminal.d
+
+Loading at startup (if not available an exception is thrown):
+    $ dmd -version=dl -unittest /path/to/libdl.a -L-ldl -run terminal.d
+
+	  dmd -version=dl -unittest -m32 -gc /usr/lib32/libdl.a -L-ldl -run
+	  terminal.d
+
+	  rdmd --main -version=dl -unittest -m32 -gc /usr/lib32/libdl.a -L-ldl
+	  terminal.d
+	
+	  rdmd --main -unittest -gc /usr/lib32/libtermcap.a terminal.d
+
+// TODO
+// try libraries
+// termcap
+// ncurses
+// curses
+
+Windows (since version ???)
+---------------------------
+
+    $ dmd -unittest -run terminal.d
+
+Licence
+=======
+
+Licence depends on the software linked against.
+
+Depends on what you link to.
+
+
+Dependencies
+============
+
+Uses termcap/ncurses on Posix
+libtermcap
+libncurses
